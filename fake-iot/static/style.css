@@ -1,0 +1,114 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.category {
+    flex: 1 1 30%;
+    text-align: center;
+    padding: 20px;
+    background: #f9fbfd;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.category:hover {
+    transform: translateY(-5px);
+}
+
+.category-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.category h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #0072ff;
+    border-bottom: 2px solid #00c6ff;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.device {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    padding: 10px 15px;
+    background: #ffffff;
+    border: 1px solid #e0e6ed;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.2s;
+}
+
+.device:hover {
+    transform: scale(1.02);
+    background-color: #f0f8ff;
+}
+
+.device p {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #333;
+}
+
+.device img {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    transition: filter 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .category {
+        flex: 1 1 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .category {
+        flex: 1 1 100%;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
