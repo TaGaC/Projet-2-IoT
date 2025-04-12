@@ -1,6 +1,6 @@
 # AdFree – Faux site de téléchargement APK (projet cybersécurité)
 
-## 🔧 Lancer le site (localement ou sur VPS)
+##  Lancer le site (localement ou sur VPS)
 
 ### 1. Cloner le dépôt
 ```bash
@@ -33,6 +33,6 @@ download-site/
 
 ---
 
-### 📍 Étape 4 : Sauvegarde et ferme le fichier
+###  Étape 4 : Sauvegarde et ferme le fichier
 
 
