@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>AdFree - Téléchargement</title>
+</head>
+<body>
+  <img src="{{ url_for('static', filename='app_icon.png') }}" alt="AdFree logo" width="100">
+  <h1>✨ AdFree ✨</h1>
+  <p>Profitez de votre musique sans interruption.</p>
+  <p>Bloquez les publicités sur Spotify et Deezer grâce à notre application légère et gratuite.</p>
+
+  <a href="/AdFree.apk">
+    <button>📥 Télécharger l’application</button>
+  </a>
+
+  <p style="margin-top: 20px; font-size: 12px; color: gray;">Version 1.0 • Android uniquement</p>
+</body>
+</html>
+
