@@ -15,22 +15,6 @@
     <p>Bonjour, <strong>{{ username }}</strong> !</p>
     <p><a href="{{ url_for('logout') }}">Se déconnecter</a></p>
 
-    <h2 style="color: #0072ff;">Surveillance vidéo</h2>
-    <div class="video-grid">
-      <div class="camera-feed">
-        <div class="camera-placeholder" data-video-id="video1">
-          <video id="video1" src="{{ url_for('static', filename='videos/camera1.mp4') }}" autoplay loop muted></video>
-        </div>
-        <h3>Caméra Entrée</h3>
-      </div>
-      <div class="camera-feed">
-        <div class="camera-placeholder" data-video-id="video2">
-          <video id="video2" src="{{ url_for('static', filename='videos/camera2.mp4') }}" autoplay loop muted></video>
-        </div>
-        <h3>Caméra Salon</h3>
-      </div>
-    </div>
-
     <h2 style="margin-top: 40px; color: #0072ff;">Appareils connectés</h2>
     <div class="grid">
       <!-- Lumières -->
@@ -64,20 +48,35 @@
       </div>
 
       <!-- Caméras -->
-      <div class="category">
-        <img src="{{ url_for('static', filename='img/camera.png') }}" class="category-icon" alt="Caméras">
-        <h2>Caméras</h2>
-        <div class="device toggle-camera" data-video="video1">
-          <p>Extérieure</p>
-          <img src="{{ url_for('static', filename='img/eye.png') }}" alt="Eye Icon">
-        </div>
-        <div class="device toggle-camera" data-video="video2">
-          <p>Salon</p>
-          <img src="{{ url_for('static', filename='img/eye.png') }}" alt="Eye Icon">
-        </div>
+      <!-- Caméras -->
+<div class="category">
+  <img src="{{ url_for('static', filename='img/camera.png') }}" class="category-icon" alt="Caméras">
+  <h2>Caméras</h2>
+  <div class="device toggle-camera" data-video="video1">
+    <p>Extérieure</p>
+    <img src="{{ url_for('static', filename='img/eye.png') }}" alt="Eye Icon">
+  </div>
+  <div class="device toggle-camera" data-video="video2">
+    <p>Salon</p>
+    <img src="{{ url_for('static', filename='img/eye.png') }}" alt="Eye Icon">
+  </div>
+
+  <!-- Surveillance vidéo déplacée ici -->
+  <div class="video-grid" style="margin-top: 20px;">
+    <div class="camera-feed">
+      <div class="camera-placeholder" data-video-id="video1">
+        <video id="video1" src="{{ url_for('static', filename='videos/camera1.mp4') }}" autoplay loop muted></video>
       </div>
+      <h3>Caméra Entrée</h3>
+    </div>
+    <div class="camera-feed">
+      <div class="camera-placeholder" data-video-id="video2">
+        <video id="video2" src="{{ url_for('static', filename='videos/camera2.mp4') }}" autoplay loop muted></video>
+      </div>
+      <h3>Caméra Salon</h3>
     </div>
   </div>
+</div>
 
   <script>
     // Lumières
