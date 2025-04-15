@@ -97,6 +97,7 @@ header h1 {
   transition: filter 0.3s ease-in-out;
 }
 
+/* Caméras */
 .video-grid {
   display: flex;
   flex-wrap: wrap;
@@ -105,33 +106,67 @@ header h1 {
 }
 
 .camera-feed {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  width: 320px;
-}
-
-.camera-feed video {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.camera-feed h3 {
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 15px;
   text-align: center;
-  color: #0072ff;
-  margin-top: 10px;
+  max-width: 420px;
+  flex: 1 1 360px;
 }
 
-/* ✅ Nouveau style pour les vidéos désactivées */
 .camera-placeholder {
   width: 100%;
-  height: 200px;
   background-color: black;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.camera-placeholder video {
+  display: block;
+  width: 100%;
+  height: auto;
   border-radius: 8px;
 }
 
-/* ✅ Style des boutons de température */
+.camera-info {
+  margin-top: 10px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding-bottom: 10px;
+}
+
+.camera-info h3 {
+  font-size: 1.2rem;
+  color: #0072ff;
+  margin: 10px 0;
+}
+
+/* Bouton œil */
+.camera-info .toggle-camera {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 12px;
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.camera-info .toggle-camera:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.camera-info .toggle-camera img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Boutons température */
 .device button {
   background-color: #0072ff;
   color: white;
@@ -155,6 +190,7 @@ header h1 {
   font-weight: bold;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .category {
     flex: 1 1 45%;

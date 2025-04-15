@@ -7,8 +7,11 @@
 </head>
 <body>
   <header>
-    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" style="height: 60px; vertical-align: middle; margin-right: 15px;">
-    <h1 style="display: inline-block; vertical-align: middle;">Tableau de Bord - Objets Connectés</h1>
+    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"
+         style="height: 60px; vertical-align: middle; margin-right: 15px;">
+    <h1 style="display: inline-block; vertical-align: middle;">
+      Tableau de Bord - Objets Connectés
+    </h1>
   </header>
 
   <div class="container">
@@ -17,6 +20,7 @@
 
     <h2 style="margin-top: 40px; color: #0072ff;">Appareils connectés</h2>
     <div class="grid">
+
       <!-- Lumières -->
       <div class="category">
         <img src="{{ url_for('static', filename='img/light.png') }}" class="category-icon" alt="Lumière">
@@ -46,37 +50,52 @@
           </div>
         </div>
       </div>
-
-      <!-- Caméras -->
-      <!-- Caméras -->
-<div class="category">
-  <img src="{{ url_for('static', filename='img/camera.png') }}" class="category-icon" alt="Caméras">
-  <h2>Caméras</h2>
-  <div class="device toggle-camera" data-video="video1">
-    <p>Extérieure</p>
-    <img src="{{ url_for('static', filename='img/eye.png') }}" alt="Eye Icon">
-  </div>
-  <div class="device toggle-camera" data-video="video2">
-    <p>Salon</p>
-    <img src="{{ url_for('static', filename='img/eye.png') }}" alt="Eye Icon">
-  </div>
-
-  <!-- Surveillance vidéo déplacée ici -->
-  <div class="video-grid" style="margin-top: 20px;">
-    <div class="camera-feed">
-      <div class="camera-placeholder" data-video-id="video1">
-        <video id="video1" src="{{ url_for('static', filename='videos/camera1.mp4') }}" autoplay loop muted></video>
+      <div class="category">
+        <img src="{{ url_for('static', filename='img/camera.png') }}" class="category-icon" alt="Caméras">
+        <h2>Caméras</h2>
+      
+        <div class="video-grid">
+          <!-- Caméra Entrée -->
+          <div class="camera-feed">
+            <div class="camera-placeholder">
+              <video id="video1" src="{{ url_for('static', filename='videos/camera1.mp4') }}" autoplay loop muted></video>
+            </div>
+            <div class="camera-info">
+              <h3>Caméra Entrée</h3>
+              <div class="toggle-camera" data-video="video1">
+                <img src="{{ url_for('static', filename='img/eye.png') }}" alt="Eye Icon">
+              </div>
+            </div>
+          </div>
+      
+          <!-- Caméra Salon -->
+          <div class="camera-feed">
+            <div class="camera-placeholder">
+              <video id="video2" src="{{ url_for('static', filename='videos/camera2.mp4') }}" autoplay loop muted></video>
+            </div>
+            <div class="camera-info">
+              <h3>Caméra Salon</h3>
+              <div class="toggle-camera" data-video="video2">
+                <img src="{{ url_for('static', filename='img/eye.png') }}" alt="Eye Icon">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <h3>Caméra Entrée</h3>
-    </div>
-    <div class="camera-feed">
-      <div class="camera-placeholder" data-video-id="video2">
-        <video id="video2" src="{{ url_for('static', filename='videos/camera2.mp4') }}" autoplay loop muted></video>
+      
+      
+      <!-- Serrure Connectée -->
+      <div class="category">
+        <img src="{{ url_for('static', filename='img/lock.png') }}" class="category-icon" alt="Serrure Connectée">
+        <h2>Serrure Connectée</h2>
+        <div class="device">
+          <p>Entrée Principale</p>
+          <img src="{{ url_for('static', filename='img/open.png') }}" alt="Lock State Icon"
+               class="toggle-lock" data-state="open">
+        </div>
       </div>
-      <h3>Caméra Salon</h3>
     </div>
   </div>
-</div>
 
   <script>
     // Lumières
@@ -97,7 +116,6 @@
       device.addEventListener('click', function () {
         const videoId = device.getAttribute('data-video');
         const video = document.getElementById(videoId);
-
         if (video.style.display !== 'none') {
           video.style.display = 'none';
           device.querySelector('img').setAttribute('src', "{{ url_for('static', filename='img/eye-off.png') }}");
@@ -114,6 +132,19 @@
       currentTemp += delta;
       document.getElementById("tempValue").textContent = currentTemp + "°C";
     }
+
+    // Serrure connectée
+    document.querySelectorAll('.toggle-lock').forEach(function(img) {
+      img.addEventListener('click', function () {
+        const isOpen = img.getAttribute('data-state') === 'open';
+        const newState = isOpen ? 'closed' : 'open';
+        img.setAttribute('src', isOpen
+          ? "{{ url_for('static', filename='img/closed.png') }}"
+          : "{{ url_for('static', filename='img/open.png') }}"
+        );
+        img.setAttribute('data-state', newState);
+      });
+    });
   </script>
 </body>
 </html>
