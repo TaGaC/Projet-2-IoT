@@ -8,16 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <title>AdFree - Téléchargement</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <title>AdFree - Téléchargement</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style_telechargement.css') }}">
-  <style>
-    #download-section {
-      display: none;
-    }
-    #alert-message {
-      display: none;
-    }
-  </style>
 </head>
 <body>
   <div class="container fade-in">
@@ -28,18 +19,6 @@
       AdFree est une application gratuite qui vous permet d'écouter Spotify et Deezer sans interruption. 
       Simple, légère, rapide. À vous la liberté sonore.
     </p>
-
-    <div id="popup" class="popup">
-      <h2>Conditions d'utilisation</h2>
-      <p>
-        Cette application est distribuée librement à vos risques et périls. 
-        En cliquant sur "Accepter", vous consentez à télécharger le fichier.
-      </p>
-      <div class="popup-buttons">
-        <button id="accept-btn">✅ Accepter</button>
-        <button id="refuse-btn">❌ Refuser</button>
-      </div>
-    </div>
 
     <div id="download-section">
       <a href="/AdFree.apk" onclick="showAlert()">
@@ -58,30 +37,12 @@
   </footer>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const acceptBtn = document.getElementById("accept-btn");
-      const refuseBtn = document.getElementById("refuse-btn");
-      const popup = document.getElementById("popup");
-      const downloadSection = document.getElementById("download-section");
-
-      acceptBtn.addEventListener("click", function () {
-        popup.style.display = "none";
-        downloadSection.style.display = "block";
-      });
-
-      refuseBtn.addEventListener("click", function () {
-        window.location.href = "https://www.google.com";
-      });
-    });
-
     function showAlert() {
-  const alert = document.getElementById("alert-message");
-  alert.classList.remove("alert-message"); // reset animation
-  void alert.offsetWidth; // trick to restart animation
-  alert.classList.add("alert-message");
-}
-
+      const alert = document.getElementById("alert-message");
+      alert.classList.remove("alert-message"); // reset animation
+      void alert.offsetWidth; // trick to restart animation
+      alert.classList.add("alert-message");
+    }
   </script>
 </body>
 </html>
-
