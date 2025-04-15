@@ -4,7 +4,7 @@ app = Flask(__name__)
 app.secret_key = "UneSuperCleSecrete"  # Nécessaire pour les sessions
 
 # Identifiants d'accès
-USERNAME = "admin"
+USERNAME = "SuperTK79"
 PASSWORD = "SuperSecret123"
 
 @app.route("/", methods=["GET", "POST"])
