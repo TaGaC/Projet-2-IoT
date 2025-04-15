@@ -27,7 +27,8 @@
       <p class="version">Version 1.0 – Android 7+</p>
     </div>
 
-    <div id="alert-message" class="alert-message">
+    <!-- Le message d'alerte est masqué au chargement -->
+    <div id="alert-message" class="alert-message" style="display: none;">
       ✅ Téléchargement en cours… Merci d’avoir choisi AdFree !
     </div>
   </div>
@@ -38,10 +39,14 @@
 
   <script>
     function showAlert() {
-      const alert = document.getElementById("alert-message");
-      alert.classList.remove("alert-message"); // reset animation
-      void alert.offsetWidth; // trick to restart animation
-      alert.classList.add("alert-message");
+      const alertElem = document.getElementById("alert-message");
+      // Affiche le message d'alerte
+      alertElem.style.display = "block";
+      
+      // Si une animation CSS est prévue, on peut la réinitialiser :
+      alertElem.classList.remove("alert-message"); // réinitialisation
+      void alertElem.offsetWidth; // force le reflow pour relancer l'animation
+      alertElem.classList.add("alert-message");
     }
   </script>
 </body>
