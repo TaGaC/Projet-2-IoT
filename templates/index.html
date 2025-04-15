@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>AdFree - Téléchargement</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>AdFree - Téléchargement</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style_telechargement.css') }}">
+  <style>
+    #download-section {
+      display: none;
+    }
+    #alert-message {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container fade-in">
+    <img src="{{ url_for('static', filename='app_icon.png') }}" alt="Icône AdFree" class="logo" />
+    <h1>✨ AdFree</h1>
+    <p class="tagline">Bloquez les publicités et profitez de votre musique en paix.</p>
+    <p class="description">
+      AdFree est une application gratuite qui vous permet d'écouter Spotify et Deezer sans interruption. 
+      Simple, légère, rapide. À vous la liberté sonore.
+    </p>
+
+    <div id="popup" class="popup">
+      <h2>Conditions d'utilisation</h2>
+      <p>
+        Cette application est distribuée librement à vos risques et périls. 
+        En cliquant sur "Accepter", vous consentez à télécharger le fichier.
+      </p>
+      <div class="popup-buttons">
+        <button id="accept-btn">✅ Accepter</button>
+        <button id="refuse-btn">❌ Refuser</button>
+      </div>
+    </div>
+
+    <div id="download-section">
+      <a href="/AdFree.apk" onclick="showAlert()">
+        <button class="download-btn">📥 Télécharger l’application</button>
+      </a>
+      <p class="version">Version 1.0 – Android 7+</p>
+    </div>
+
+    <div id="alert-message" class="alert-message">
+      ✅ Téléchargement en cours… Merci d’avoir choisi AdFree !
+    </div>
+  </div>
+
+  <footer>
+    © AdFree 2025 – Tous droits réservés
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const acceptBtn = document.getElementById("accept-btn");
+      const refuseBtn = document.getElementById("refuse-btn");
+      const popup = document.getElementById("popup");
+      const downloadSection = document.getElementById("download-section");
+
+      acceptBtn.addEventListener("click", function () {
+        popup.style.display = "none";
+        downloadSection.style.display = "block";
+      });
+
+      refuseBtn.addEventListener("click", function () {
+        window.location.href = "https://www.google.com";
+      });
+    });
+
+    function showAlert() {
+  const alert = document.getElementById("alert-message");
+  alert.classList.remove("alert-message"); // reset animation
+  void alert.offsetWidth; // trick to restart animation
+  alert.classList.add("alert-message");
+}
+
+  </script>
+</body>
+</html>
+

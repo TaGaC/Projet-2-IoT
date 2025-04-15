@@ -1,0 +1,172 @@
+/* Style général */
+body {
+  background-color: #f3f4f6;
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
+}
+
+/* Conteneur principal */
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  margin-top: 60px;
+  animation: fadeIn 1.2s ease-out;
+}
+
+/* Logo */
+.logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+/* Titre */
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+/* Slogan */
+.tagline {
+  font-style: italic;
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+/* Description */
+.description {
+  font-size: 1.1em;
+  line-height: 1.6em;
+  margin-bottom: 30px;
+}
+
+/* Bouton de téléchargement */
+.download-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Version info */
+.version {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+/* Pop-up RGPD */
+.popup {
+  background-color: #fefefe;
+  border: 1px solid #ddd;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.popup-buttons {
+  margin-top: 20px;
+}
+
+.popup-buttons button {
+  margin: 0 10px;
+  padding: 10px 18px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.popup-buttons button:first-child {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.popup-buttons button:last-child {
+  background-color: #e74c3c;
+  color: white;
+}
+
+/* Message d’alerte après clic */
+.alert-message {
+  background-color: #eafaf1;
+  color: #2e7d32;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 0.95em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 1s ease-out;
+}
+
+/* Animation d’apparition */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* Police Google Poppins */
+body, button, p, h1, h2 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Rebond au clic */
+.download-btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) inset;
+}
+
+/* Animation d’apparition + disparition de l’alerte */
+.alert-message {
+  opacity: 0;
+  animation: fadeInOut 4s forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
